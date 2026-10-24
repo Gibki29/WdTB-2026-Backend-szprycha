@@ -1,4 +1,4 @@
-package pl.wsb.KaBaPa.account.domain;
+package pl.wsb.szprycha.account.domain;
 
 public enum AccountRole {
     USER,

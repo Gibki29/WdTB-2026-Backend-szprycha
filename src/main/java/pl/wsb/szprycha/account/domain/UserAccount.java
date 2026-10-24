@@ -1,4 +1,4 @@
-package pl.wsb.KaBaPa.account.domain;
+package pl.wsb.szprycha.account.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
