@@ -1,36 +1,36 @@
 <!doctype html>
 <html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Backend działa · WdTB-2026-Backend</title>
-<style>
-  :root { --ink: #141e50; --blue: #006efa; --muted: #5b6685; --line: #d5def0; --bg: #f5f8fd; --tint: #e8f0ff; --ok: #1d7a4c; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif; padding: 32px 20px 64px; }
-  main { max-width: 860px; margin: 0 auto; display: grid; gap: 28px; }
-  header { display: grid; gap: 14px; }
-  .logo { height: 60px; width: auto; }
-  h1 { margin: 0; font-size: clamp(28px, 5vw, 42px); line-height: 1.1; }
-  h2 { margin: 0 0 10px; font-size: 20px; }
-  h3 { margin: 18px 0 6px; font-size: 16px; }
-  p { margin: 0; }
-  .status { display: inline-flex; gap: 10px; align-items: center; font-weight: 600; color: var(--ok); }
-  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px #d6f0e0; }
-  .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
-  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; background: var(--tint); padding: 2px 6px; border-radius: 5px; }
-  .btn { display: inline-block; margin-top: 12px; background: var(--blue); color: #fff; text-decoration: none; font-weight: 600; padding: 10px 16px; border-radius: 8px; }
-  .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-  table { border-collapse: collapse; width: 100%; margin-top: 10px; font-size: 15px; }
-  td { padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  td:first-child { color: var(--muted); white-space: nowrap; width: 1%; }
-  ol { margin: 8px 0 0; padding-left: 22px; }
-  li + li { margin-top: 4px; }
-  .muted { color: var(--muted); font-size: 14px; }
-  .project { border: 2px solid var(--blue); }
-  .project .pitch { font-size: 18px; margin-bottom: 6px; }
-  pre { background: var(--tint); border-radius: 8px; padding: 12px 14px; overflow-x: auto; margin: 10px 0 0; font-size: 14px; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Backend działa · WdTB-2026-Backend</title>
+  <style>
+    :root { --ink: #141e50; --blue: #006efa; --muted: #5b6685; --line: #d5def0; --bg: #f5f8fd; --tint: #e8f0ff; --ok: #1d7a4c; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif; padding: 32px 20px 64px; }
+    main { max-width: 860px; margin: 0 auto; display: grid; gap: 28px; }
+    header { display: grid; gap: 14px; }
+    .logo { height: 60px; width: auto; }
+    h1 { margin: 0; font-size: clamp(28px, 5vw, 42px); line-height: 1.1; }
+    h2 { margin: 0 0 10px; font-size: 20px; }
+    h3 { margin: 18px 0 6px; font-size: 16px; }
+    p { margin: 0; }
+    .status { display: inline-flex; gap: 10px; align-items: center; font-weight: 600; color: var(--ok); }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px #d6f0e0; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; background: var(--tint); padding: 2px 6px; border-radius: 5px; }
+    .btn { display: inline-block; margin-top: 12px; background: var(--blue); color: #fff; text-decoration: none; font-weight: 600; padding: 10px 16px; border-radius: 8px; }
+    .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; font-size: 15px; }
+    td { padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    td:first-child { color: var(--muted); white-space: nowrap; width: 1%; }
+    ol { margin: 8px 0 0; padding-left: 22px; }
+    li + li { margin-top: 4px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .project { border: 2px solid var(--blue); }
+    .project .pitch { font-size: 18px; margin-bottom: 6px; }
+    pre { background: var(--tint); border-radius: 8px; padding: 12px 14px; overflow-x: auto; margin: 10px 0 0; font-size: 14px; }
+  </style>
 </head>
 <body>
 <main>
@@ -39,23 +39,23 @@
     <span class="status"><span class="dot" aria-hidden="true"></span>Backend działa</span>
     <h1>Wprowadzenie do technologii backendowych</h1>
     <p>Tę stronę serwuje Wasza aplikacja Spring Boot z pliku <code>src/main/resources/static/index.html</code>.
-       Na LAB 01 wypełnijcie poniższą wizytówkę projektu. LAB 02 zaczyna się od jej prezentacji:
-       uruchamiacie aplikację i pokazujecie tę stronę.</p>
+      Na LAB 01 wypełnijcie poniższą wizytówkę projektu. LAB 02 zaczyna się od jej prezentacji:
+      uruchamiacie aplikację i pokazujecie tę stronę.</p>
   </header>
 
   <!-- LAB 01: wizytówka Waszego projektu, na jej podstawie prezentujecie projekt na początku LAB 02.
        Zastąpcie wszystkie znaczniki „uzupełnij” w nawiasach kwadratowych (reguła R1.04). -->
   <section class="card project">
-    <h2>Grafik zajęć w studiu sportowym</h2>
-    <p class="pitch">[uzupełnij: jedno zdanie – jaki problem rozwiązuje aplikacja i dla kogo]</p>
+    <h2>Szprycha – zgłoszenia napraw w serwisie rowerowym</h2>
+    <p class="pitch">Właściciel małego serwisu rowerowego przyjmuje rowery „na karteczkę”, a klienci ciągle dzwonią z pytaniem o status naprawy – nasza aplikacja prowadzi każde zgłoszenie od przyjęcia do odbioru, liczy wycenę z usług i części, a właścicielowi pokazuje, co się najczęściej psuje i ile zarabia.</p>
     <table>
-      <tr><td>Autorzy</td><td>Kacper Pękal, Bartosz Mioduszewski, Patryk Ostrowski, grupa 6</td></tr>
-      <tr><td>Dla kogo</td><td>Dla trenerów i dla właścicielki małego studia</td></tr>
-      <tr><td>Najważniejsze funkcje</td><td>[uzupełnij: 3 funkcje, np. lista stolików, rezerwacja, raport dla właściciela]</td></tr>
+      <tr><td>Autorzy</td><td>Kacper Pękal, Bartosz Mioduszewski, Alan Cały, grupa 6</td></tr>
+      <tr><td>Dla kogo</td><td>Dla właściciela serwisu rowerowego, jego mechaników i klientów serwisu</td></tr>
+      <tr><td>Najważniejsze funkcje</td><td>przyjęcie roweru i śledzenie statusu naprawy, wycena z usług i części z akceptacją przez klienta, raport przychodów i średniego czasu naprawy dla właściciela</td></tr>
     </table>
     <h3>Zmiany w projekcie</h3>
     <ul>
-      <li><b>LAB 01:</b> [uzupełnij: co zmieniliście, np. nazwa projektu, konta zespołu, wizytówka]</li>
+      <li><b>LAB 01:</b> wybór tematu i opis koncepcji, nazwa projektu, uzupełnienie wizytówki projektu (opis, autorzy, odbiorcy, funkcje)</li>
     </ul>
     <p class="muted">Na kolejnych laboratoriach dopisujcie tu kolejne punkty.</p>
   </section>
