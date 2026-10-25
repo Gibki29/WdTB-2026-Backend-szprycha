@@ -16,4 +16,22 @@ public class BikeInfo {
 
     protected BikeInfo() {
     }
+
+    public BikeInfo(String brand, String model, String frameNumber) {
+        this.brand = brand;
+        this.model = model;
+        this.frameNumber = frameNumber;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getFrameNumber() {
+        return frameNumber;
+    }
 }
