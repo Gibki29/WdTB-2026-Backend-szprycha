@@ -1,9 +1,13 @@
 package pl.wsb.szprycha.intake.entity;
 
 import jakarta.persistence.*;
+import pl.wsb.szprycha.customer.entity.Customer;
+import pl.wsb.szprycha.repair.entity.RepairTask;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Zgłoszenie naprawy: rower przyjęty do serwisu, prowadzony od przyjęcia do odbioru. */
 @Entity
@@ -14,11 +18,10 @@ public class RepairOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_name", nullable = false, length = 80)
-    private String customerName;
-
-    @Column(name = "customer_phone", nullable = false, length = 20)
-    private String customerPhone;
+    // klient, który oddał rower; jeden klient może mieć wiele zgłoszeń
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @Column(name = "problem_description", nullable = false, length = 255)
     private String problemDescription;
@@ -36,13 +39,16 @@ public class RepairOrder {
     @Embedded
     private BikeInfo bike;                      // marka, model, numer ramy
 
+    /** Strona odwrotna relacji RepairTask.repairOrder: nie tworzy kolumny, pozwala przejść od zgłoszenia do jego usług. */
+    @OneToMany(mappedBy = "repairOrder")
+    private List<RepairTask> tasks = new ArrayList<>();
+
     protected RepairOrder() {
     }
 
-    public RepairOrder(String customerName, String customerPhone, String problemDescription,
-                       RepairStatus status, LocalDateTime receivedAt, BigDecimal estimatedCost, BikeInfo bike) {
-        this.customerName = customerName;
-        this.customerPhone = customerPhone;
+    public RepairOrder(Customer customer, String problemDescription, RepairStatus status,
+                       LocalDateTime receivedAt, BigDecimal estimatedCost, BikeInfo bike) {
+        this.customer = customer;
         this.problemDescription = problemDescription;
         this.status = status;
         this.receivedAt = receivedAt;
@@ -54,12 +60,8 @@ public class RepairOrder {
         return id;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public String getCustomerPhone() {
-        return customerPhone;
+    public Customer getCustomer() {
+        return customer;
     }
 
     public String getProblemDescription() {
@@ -80,5 +82,9 @@ public class RepairOrder {
 
     public BikeInfo getBike() {
         return bike;
+    }
+
+    public List<RepairTask> getTasks() {
+        return tasks;
     }
 }
